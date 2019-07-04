@@ -1,0 +1,106 @@
+<br>
+<div class="row" ng-init="getParam()">
+    <div class="col m2"></div>
+    <div class="col s12 m8">
+    <div class="card darken-2 z-depth-2">
+        <!-- <div class="card-image" ng-if="mess.ext == '.png' || mess.ext == '.jpeg' || mess.ext == '.jpg' || mess.ext == '.gif'">
+            <img src="{{mess.file}}">
+            <span class="card-title flow-text"><h6>{{mess.name}}</h6></span>
+        </div> -->
+
+        <div class="card-content amber darken-1 white-text">
+            <h4 ng-if="!mess.msg">Simple File Upload Application</h4>
+            
+            <p class="red-text" ng-if="mess.err">{{mess.err}}</p>
+            <p class="green-text text-darken-4" ng-if="mess.msg">{{mess.msg}} <a href="/download/{{mess.name}}">Click Here </a> to download</p>
+            <p ng-if="mess.contType"><a href="/ViewDoc/{{mess.name}}/{{mess.contType.join('+')}}">Click Here</a> to view the File</p>
+        </div>
+        <div class="card-action">
+            <div class="progress" ng-show="mess.uploaded">
+                <div class="indeterminate"></div>
+            </div>
+            <form ng-submit="uploadFile()" enctype="multipart/form-data">
+                <div class="input-field lighten-6">
+                    <input id="prod" name="prod" type="text" class="validate" ng-model="prod">
+                    <label for="prod">Product</label>
+                    </div>
+                    <div class="input-field lighten-6">
+                    <input id="flex" name="flex" type="text" class="validate" ng-model="flex">
+                    <label for="flex">Flexera ID</label>
+                    </div>
+                    <div class="input-field lighten-6">
+                    <input id="ver" name="ver" type="text" class="validate" ng-model="ver">
+                    <label for="ver">Version</label>
+                    </div>
+                    <div class="input-field lighten-6">
+                    <input id="ed" name="ed" type="text" class="validate" ng-model="ed">
+                    <label for="ed">Edition</label>
+                    </div>
+
+                    <label>Installation Source</label>
+                    <select class="browser-default" ng-model="instSelect" name="installSrc">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="wipro">Wipro</option>
+                    <option value="customer supplied">Customer Supply</option>
+                    <option value="partner word">Partner world</option>
+                </select>
+
+
+                <div class="input-field lighten-6" ng-show="instSelect">
+                    <input id="{{instSelect}}" name="{{instSelect}}" type="text" class="validate"  ng-model="selectedData">
+                    <label for="{{instSelect}}">{{instSelect}}</label>
+                </div>
+                
+                <div class="file-field input-field">
+                    <div class="btn cyan">
+                        <span>File</span>
+                        <input file-model="myDoc" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate dark-text" ng-model="myText" type="text">
+                    </div>
+                </div>
+                <input type="hidden" ng-model="myGet">
+                <button type="submit" class="btn waves-effect waves-light amber" ng-model="uploading">Submit</button>
+                
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    
+    <hr>
+
+<h4>{{myGet}} updated list</h4> 
+<table class="card striped amber highlight centered" ng-init="getSpecificCatData(myGet)">
+<thead>
+    <tr>
+        <th>Product</th>
+        <th>File Name</th>
+        <th>Image</th>
+        <th>Flex</th>
+        <th>Version</th>
+        <th>Edition</th>
+        <th>Installation Source</th>
+        <th>Selected Data</th>
+        <th>Updated On</th>
+        <th>File Uploaded</th>
+    </tr>
+</thead>
+
+<tbody ng-repeat="spd in gotSpecificData">
+    <tr>
+        <td>{{spd.prod}}</td>
+        <td>{{spd.fileDetails.originalname}}</td>
+        <td> <img ng-src="../uploads/{{spd.fileDetails.filename}}" class="responsive-img" width="80" alt="Not Available"></td>
+        <td>{{spd.flex}}</td>
+        <td>{{spd.ver}}</td>
+        <td>{{spd.ed}}</td>
+        <td>{{spd.instselect}}</td>
+        <td>{{spd.selecteddata}}</td>
+        <td>{{spd.createdOn}}</td>
+        <td><a class="indigo-text text-darken-4 button" href="/ViewDoc/{{spd.fileDetails.filename}}/{{spd.fileDetails.mimetype.split('/').join('+')}}">View</a> | <a class="indigo-text text-darken-4" href="/DownloadDoc/{{spd.fileDetails.filename}}/{{spd.fileDetails.mimetype.split('/').join('+')}}">Download</a></td>
+    </tr>
+</tbody>
+</table>
+<br>

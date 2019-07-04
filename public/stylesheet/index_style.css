@@ -1,0 +1,14 @@
+.formDispl{
+    transition: all linear 0.4s;
+    opacity: 1;
+}
+
+.formDispl.ng-hide{
+    opacity: 0;
+}
+
+.ng-hide{
+    opacity: 0;
+    transition: none 0;
+}
+

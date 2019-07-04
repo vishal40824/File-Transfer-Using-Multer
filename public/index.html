@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="fileApp">
+<head>
+    <title>Welcome</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="angular-1.5.8/angular.min.js"></script>
+    <script src="angular-1.5.8/angular-route.min.js"></script>
+    <script src="angular-1.5.8/angular-animate.min.js"></script>
+    <script src="materialize/js/materialize.min.js"></script>
+    <script src="app.js"></script>
+    <script src="controller.js"></script>
+    <link rel="stylesheet" href="stylesheet/index_style.css">
+    <link rel="stylesheet" href="materialize/css/materialize.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#001064">
+
+</head>
+
+<body>
+        <nav class="indigo lighten-1">
+          <div class="nav-wrapper">
+            <a href="" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <div class="container">
+            <a href="#/" class="brand-logo">Data Vault</a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="#/">Home</a></li>
+              <li><a href="#/users/logout">logout</a></li>
+            </ul>
+            </div>
+          </div>
+        </nav>
+
+        <ul class="sidenav indigo lighten-1" id="mobile-demo">
+            <!-- <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">Javascript</a></li>
+            <li><a href="mobile.html">Mobile</a></li> -->
+            <li><a href="#/" id="home" class="amber-text">Home</a></li>
+            <li><a href="/users/logout" class="red-text">logout</a></li>
+          </ul>
+    <div class="container">
+      <div ng-view></div>
+    </div>
+    <script type="text/javascript">  
+      $(document).ready(function(){
+        $('.sidenav').sidenav();
+      });
+
+      $('#home').click(function(){
+        $('.sidenav').sidenav('close');
+      });
+    </script>
+
+    <script src="/javascript/register.js"></script>
+</body>
+</html>

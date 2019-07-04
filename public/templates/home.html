@@ -1,0 +1,37 @@
+<br>
+
+<div class="row" ng-init="dispCat()">
+    <div class="col s6 m6" ng-repeat="c in catalogData">
+                
+        <div class="card blue-grey darken-1" style="cursor: pointer;" ng-click="catname(c.catalogname)" id="addBtn">
+        <div class="card-content white-text">
+        
+            <a class="card-title center white-text" >{{c.catalogname}}</a>
+        </div>
+        </div>
+            
+    </div>
+</div>
+        
+
+<div class="row">
+<div class="col s12 m12">
+          
+    <div class="card amber darken-3" id="addBtn">
+    <div class="card-content white-text">
+    <div ng-show="add" class="formDispl">
+        <form ng-submit="catalog()">
+                <div class="input-field">
+                    <input type="text" id="cat" name="cat" class="validate" ng-model="cat" style="color: white;" required>
+                    <label for="cat" style="color: white;">New Software Catalog</label>
+                </div>
+                <button type="submit" class="btn waves-effect waves-light blue-grey darken-1" ng-model="uploading">Submit</button>
+            </form>
+    </div>
+        <br>
+        <span class="card-title center" style="cursor: pointer;" ng-click="addcat()" ><a class="material-icons" style="color: white; font-size:50px;">{{logo}}</a></span>
+    </div>
+    </div>
+        
+</div>
+</div>
